@@ -1,0 +1,110 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+
+    <record model="ir.ui.view" id="ks_equipment.list">
+      <field name="name">ks_equipment list</field>
+      <field name="model">product.attribution</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="reference"/>
+          <field name="employe_id"/>
+          <field name="date_of_issue"/>
+           <field name="Assigned_by_id" optional="hide"/>
+           <field name="Value_of_material" optional="hide"/>
+           <field name="material_id"/>
+           <field name="category_of_equipment_id"/>
+
+           <field name="state"/>
+        </tree>
+      </field>
+    </record>
+
+
+
+      <record model="ir.ui.view" id="ks_equipment.form">
+      <field name="name">ks_equipment form</field>
+      <field name="model">product.attribution</field>
+      <field name="arch" type="xml">
+        <form>
+            <header>
+              <button name="attributed" string="Attribue" type="object" class="oe_highlight" attrs="{'invisible': [('state', '!=','new')]}"></button>
+              <button name="returned" string="Retourne" type="object" class="oe_highlight" attrs="{'invisible': [('state', '!=','attributed')]}"></button>
+              <button name="cancelled" string="Annule" type="object" class="oe_highlight" attrs="{'invisible': [('state', '!=','attributed')]}"></button>
+        <!-- Affichage de l'état actuel de l'objet -->
+              <field name="state" widget="statusbar" nolabel="1" states=""></field>
+           </header>
+
+          <sheet>
+            <group>
+              <field name="reference"/>
+              <field name="employe_id"/>
+              <field name="date_of_issue"/>
+              <field name="Assigned_by_id"/>
+              <field name="Value_of_material"/>
+              <field name="material_id"/>
+              <field name="category_of_equipment_id"/>
+
+             <!-- <field name="state"/>-->
+            </group>
+          </sheet>
+          <div class="oe_chatter">
+             <field name="message_follower_ids" widget="mail_followers"></field>
+             <field name="message_ids" widget="mail_threads"></field>
+          </div>
+        </form>
+      </field>
+    </record>
+
+
+    <!-- actions opening views on models -->
+
+    <record model="ir.actions.act_window" id="ks_equipment.action_window">
+      <field name="name">ks_equipment </field>
+      <field name="res_model">product.attribution</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+
+    <record model="ir.actions.act_window" id="ks_equipment.action_window123">
+      <field name="name">Materiel equipement </field>
+      <field name="res_model">product.template</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+
+
+    <!-- server action to the one above -->
+<!--
+    <record model="ir.actions.server" id="ks_equipment.action_server">
+      <field name="name">ks_equipment server</field>
+      <field name="model_id" ref="model_ks_equipment_ks_equipment"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+-->
+
+    <!-- Top menu item -->
+
+    <menuitem name="ks_equipment" id="ks_equipment.menu_root"/>
+
+    <!-- menu categories -->
+
+    <menuitem name="Attribution" id="ks_equipment.menu_1" parent="ks_equipment.menu_root"/>
+    <menuitem name="Materiel" id="ks_equipment.menu_2" parent="ks_equipment.menu_root"/>
+
+    <!-- actions -->
+
+    <menuitem name="List" id="ks_equipment.menu_1_list" parent="ks_equipment.menu_1"
+              action="ks_equipment.action_window"/>
+    <menuitem name="Liste_de_materiel" id="ks_equipment.menu_2_list" parent="ks_equipment.menu_2"
+              action="ks_equipment.action_window123"/>
+
+  </data>
+</odoo>

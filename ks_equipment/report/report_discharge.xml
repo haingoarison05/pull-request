@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+   <data>
+       <record id="action_report_discharge" model="ir.actions.report">
+           <field name="name">Report Discharge</field>
+           <field name="model">product.attribution</field>
+           <field name="report_type">qweb-pdf</field>
+           <field name="report_name">ks_equipment.report_discharge</field>
+           <field name="binding_model_id" ref="model_product_attribution"></field>
+<!--           <field name="report_file">ks_equipment.report_discharge</field>-->
+<!--           <field name="binding_type">report</field>-->
+       </record>
+
+       <template id="report_discharge">
+           <t t-call="web.html_container">
+              <t t-foreach="docs" t-as="o">
+                  <p><strong>KASIA SARLU</strong><br>
+                  Ex Boulengerie Soafia F/tsoa</br></p>
+
+                   <h2><strong>Objet : Lettre de décharge</strong></h2>
+
+                       <p>Par la présente lettre, l'entreprise confie à Madame ANDRIAMALALA Mickael le matériel Huawei P30 Pro, le 23 février 2023.</p>
+
+                       <p>Ce matériel demeure la propriété de l'entreprise.</p>
+
+                       <p>Il est convenu que Madame ANDRIAMALALA Mickael ne pourra utiliser ce matériel à d’autres fins que les fins professionnelles, sans autorisation expresse et préalable de l’entreprise.</p>
+
+                       <p>Madame ANDRIAMALALA Mickael s'engage à restituer l’intégralité du matériel ainsi confié à la date convenue pour le rendre.</p>
+                       <p>Il est précisé qu'en cas de détérioration ou de perte du matériel ainsi prêté, à la suite d'une faute lourde de Madame ANDRIAMALALA Mickael, cette dernière pourra être tenue de rembourser à l'entreprise la valeur de ce matériel qui s'élève à 450,000 Ariary.</p>
+
+
+
+                                         <p><strong><center>Fait à Antananarivo, le 02 mars 2023.</center></strong></p>
+
+                           <p>Signature,</p>
+              </t>
+           </t>
+       </template>
+
+<!--       -->
+<!--        <record id="action_report_discharge" model="ir.actions.report">-->
+<!--           <field name="name">Report Discharge</field>-->
+<!--           <field name="model">product.attribution</field>-->
+<!--           <field name="report_type">qweb-pdf</field>-->
+<!--           <field name="report_name">ks_equipment.report_discharge</field>-->
+<!--           <field name="binding_model_id" ref="model_product_attribution"></field>-->
+<!--&lt;!&ndash;           <field name="report_file">ks_equipment.report_discharge</field>&ndash;&gt;-->
+<!--&lt;!&ndash;           <field name="binding_type">report</field>&ndash;&gt;-->
+<!--       </record>-->
+<!--       -->
+<!--       -->
+<!--       -->
+<!--       -->
+<!--       &lt;!&ndash;       attestation&ndash;&gt;-->
+
+
+  </data>
+</odoo>
